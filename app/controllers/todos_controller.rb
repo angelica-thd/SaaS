@@ -12,11 +12,17 @@ class TodosController < ApplicationController
     @todo = Todo.create!(todo_params)
     json_response(@todo, :created)
   end
-  
+
+  # PUT /todos/:id
+  def update
+    @todo.update(todo_params)
+    head :no_content
+  end
   # GET /todos/:id
    def show
      json_response(@todo)
    end
+   
   private
 
     def todo_params
