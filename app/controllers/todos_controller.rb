@@ -22,7 +22,11 @@ class TodosController < ApplicationController
    def show
      json_response(@todo)
    end
-   
+   # DELETE /todos/:id
+     def destroy
+       @todo.destroy
+       head :no_content
+     end   
   private
 
     def todo_params
