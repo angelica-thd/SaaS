@@ -18,6 +18,7 @@ gem 'puma', '~> 3.7'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
 # Use CoffeeScript or .cofee assets and views
 gem 'coffee-script-source','1.8.0'
 # Use Capistrano for deployment
