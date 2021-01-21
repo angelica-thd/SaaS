@@ -1,5 +1,8 @@
 class AuthenticationController < ApplicationController
   #POST auth\login
+  #when authenticating a user we dont need a token -> only user valid_credentials
+  #so no request authentication for that
+  skip_before_action :authorize_request, only: :authenticate
   # return auth token once user is authenticated
  def authenticate
    auth_token =

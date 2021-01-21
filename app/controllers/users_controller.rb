@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   # POST /signup
+  #when signing up a user we dont need a token -> only user valid_credentials
+  #so no request authentication for that
+  skip_before_action :authorize_request, only: :create
   # return authenticated token upon signup
   def create
     user = User.create!(user_params)  #create! in case of an error  the exception will be handled instead of failing and returning 'false'
