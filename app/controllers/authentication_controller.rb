@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  #LOGIN
+  #POST auth\login
   # return auth token once user is authenticated
  def authenticate
    auth_token =
