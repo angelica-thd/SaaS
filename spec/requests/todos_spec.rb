@@ -8,16 +8,13 @@ RSpec.describe 'Todos API', type: :request do
   let(:todo_id) { todos.first.id }
   # authorize request
   let(:headers) { valid_headers }
-  # initialize test data
-  let!(:todos) { create_list(:todo, 10) }
-  let(:todo_id) { todos.first.id }
+
 
   # Test suite for GET /todos
   describe 'GET /todos' do
     # update request with headers
     before { get '/todos', params: {}, headers: headers }
     # make HTTP get request before each example
-    before { get '/todos' }
 
     it 'returns todos' do
       # Note `json` is a custom helper to parse JSON responses
@@ -82,6 +79,7 @@ RSpec.describe 'Todos API', type: :request do
        expect(response).to have_http_status(204)
      end
    end
+
   # Test suite for POST /todos
   describe 'POST /todos' do
     # valid payload
@@ -112,7 +110,7 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(json['message'])
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match(/Validation failed: Title can't be blank/)
       end
     end
   end

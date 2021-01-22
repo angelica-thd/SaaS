@@ -3,6 +3,7 @@ class AuthenticationController < ApplicationController
   #when authenticating a user we dont need a token -> only user valid_credentials
   #so no request authentication for that
   skip_before_action :authorize_request, only: :authenticate
+  before_action :authenticate, only: :destroy
   # return auth token once user is authenticated
  def authenticate
    auth_token =
@@ -10,6 +11,9 @@ class AuthenticationController < ApplicationController
    json_response(auth_token: auth_token)
  end
 
+  def destroy
+    @current_user = nil
+  end
  private
 
  def auth_params

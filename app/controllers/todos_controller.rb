@@ -1,5 +1,6 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
+  before_action :authorize_request
 
   # GET /todos
   def index
@@ -24,10 +25,11 @@ class TodosController < ApplicationController
      json_response(@todo)
    end
    # DELETE /todos/:id
-     def destroy
-       @todo.destroy
-       head :no_content
-     end
+   def destroy
+     @todo.destroy
+     head :no_content
+   end
+
   private
 
     def todo_params
