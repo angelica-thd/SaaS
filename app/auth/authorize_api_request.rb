@@ -8,7 +8,10 @@ class AuthorizeApiRequest
     {
       user: user
     }
+
   end
+
+
 
   private
 
@@ -16,7 +19,7 @@ class AuthorizeApiRequest
 
   def user
     # check if user is in the database
-    # memoize user object
+    # memorize user object
     @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
     # handle user not found
   rescue ActiveRecord::RecordNotFound => e
@@ -26,6 +29,8 @@ class AuthorizeApiRequest
       ("#{Message.invalid_token} #{e.message}")
     )
   end
+
+
 
   # decode authentication token
   def decoded_auth_token

@@ -4,7 +4,7 @@ require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
+#require 'rspec/rails'
 require 'database_cleaner'
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -45,12 +45,12 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include RequestSpecHelper
   config.include ControllerSpecHelper
+  config.include FactoryBot::Syntax::Methods
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  # add `FactoryBot` methods
-    config.include FactoryBot::Syntax::Methods
+
 
     # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
     config.before(:suite) do

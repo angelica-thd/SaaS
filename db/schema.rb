@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210120095931) do
+ActiveRecord::Schema.define(version: 20210218122958) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20210120095931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_items_on_todo_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.string "university"
+    t.string "department"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -34,6 +44,7 @@ ActiveRecord::Schema.define(version: 20210120095931) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
   end
 
 end
